@@ -38,7 +38,7 @@ The bot displays the answer and retrieved context.
 
 Library Used: tabula
 
-## Challenges:
+----------------------       CHALLENGES          -------------------------
 Extracting tables from PDFs with mixed formatting.
 Identifying the correct P&L table among multiple extracted tables.
 Solution:
