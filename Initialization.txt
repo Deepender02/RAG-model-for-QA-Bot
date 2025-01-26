@@ -1,0 +1,27 @@
+1) Create a Virtual Environment
+python -m venv venv
+.\venv\Scripts\activate
+
+2) Install Dependencies
+pip install -r requirements.txt
+
+3)  Install Java (Required for Tabula)
+
+4) Run the Streamlit Application
+pip install streamlit
+streamlit run rag_pipeline.py
+After running this command:
+Streamlit will display a URL like http://localhost:8501.
+Open this URL in your browser to access the app.
+
+5)Test the Application
+Upload a PDF:
+Use the file upload option to add a PDF containing financial data.
+Enter a Query:
+Type financial queries like:
+"What is the revenue for Q1 2024?"
+"How do net income and expenses compare?"
+View Results:
+The app will display:
+A generated answer to your query.
+The retrieved financial data context from the PDF.
