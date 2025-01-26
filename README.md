@@ -1,20 +1,20 @@
-Financial Question Answering Bot Using RAG
+#Financial Question Answering Bot Using RAG
 An interactive Retrieval-Augmented Generation (RAG) model designed to answer financial queries from Profit & Loss (P&L) statements extracted from PDF documents. The bot enables efficient data extraction, real-time query handling, and generative response creation for insightful decision-making.
 
-Features
+#Features
 PDF Parsing and Table Extraction:
 Extracts structured data (e.g., P&L tables) from uploaded PDF files using tabula.
 
-Context Retrieval with Vector Embeddings:
+#Context Retrieval with Vector Embeddings:
 Utilizes SentenceTransformer to encode financial data and retrieves the most relevant context for user queries.
 
-Generative Answer Creation:
+#Generative Answer Creation:
 Provides coherent, context-aware responses using a T5 model from Hugging Face.
 
-Interactive Web Interface:
+#Interactive Web Interface:
 Built with Streamlit, allowing users to upload documents, input queries, and view results in real-time.
 
-How It Works
+#How It Works
 Upload a Financial Document:
 Upload a PDF containing financial data (e.g., P&L statements).
 
@@ -31,7 +31,7 @@ Context Retrieval and Response Generation:
 Retrieves relevant rows from the P&L table using cosine similarity.
 Generates a human-readable answer using a T5 model.
 
-Technologies Used
+#Technologies Used
 Python Libraries:
 Streamlit: For creating an interactive web interface.
 SentenceTransformer: For generating vector embeddings of financial data.
