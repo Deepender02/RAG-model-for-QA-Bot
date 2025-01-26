@@ -1,0 +1,98 @@
+Documentation for the Financial QA Bot
+
+-----------------   1. Introduction
+Objective: Develop a Retrieval-Augmented Generation (RAG) model for a QA bot to answer queries related to financial data, specifically P&L tables extracted from PDFs.
+Use Case: Provide insights into financial metrics (e.g., revenue, expenses, profit margins) from structured data for better decision-making.
+
+2. Model Architecture
+
+2.1 Overview
+
+The model combines retrieval-based and generative techniques to provide precise and context-aware answers to user queries.
+
+Key Components:
+Data Extraction: Extract tables from PDF files using tabula.
+Embedding Model: SentenceTransformer for generating vector embeddings.
+Generative Model: Hugging Face's T5-small for response generation.
+Similarity Retrieval: Cosine similarity to find the most relevant financial context.
+
+2.2 Workflow
+PDF Upload & Extraction:
+User uploads a financial document (PDF).
+The bot extracts all tables and identifies the Profit & Loss (P&L) table using column keywords.
+
+Preprocessing:
+The P&L table is cleaned and converted into embeddings using the SentenceTransformer.
+
+Query Handling:
+User inputs a financial query.
+The system retrieves the most relevant rows 
+Answer Generation:
+The retrieved rows are passed as context to the T5 model, which generates a response.
+Output Display:
+The bot displays the answer and retrieved context.
+
+3. Approach to Data Extraction and Preprocessing
+
+3.1 Data Extraction
+
+Library Used: tabula
+
+Challenges:
+Extracting tables from PDFs with mixed formatting.
+Identifying the correct P&L table among multiple extracted tables.
+Solution:
+Normalized column names using .strip().lower().
+Used column keyword matching (e.g., "revenue," "expenses," "profit") to identify relevant tables.
+
+3.2 Data Preprocessing
+
+Converted extracted tables into structured embeddings:
+
+Key: Concatenation of descriptive and numerical column names (e.g., "Revenue: Q1 2024").
+Value: Corresponding numerical data.
+Vectorized the key-value pairs using the all-MiniLM-L6-v2 SentenceTransformer.
+
+4. Generative Response Creation
+
+4.1 Retrieval of Context
+
+Query Embedding: The user query is embedded using the same SentenceTransformer model.
+Similarity Computation: Cosine similarity is used to compute relevance between the query and stored embeddings.
+
+4.2 Answer Generation
+
+Generative Model: Hugging Face's T5-small model, fine-tuned for text generation tasks.
+
+5. Challenges Encountered and Solutions
+
+5.1 PDF Table Extraction
+Issue: Variability in table structure across PDFs, missing rows/columns in extraction.
+
+Solution:
+Normalized column names to handle formatting inconsistencies.
+
+5.2 Identifying P&L Table
+
+Issue: Misidentification of the relevant table among multiple extracted tables.
+
+Solution: Used keyword-based matching (Revenue, Income, Expenses) to identify the P&L table.
+
+5.3 Large PDF Files
+
+Issue: Processing time and memory usage increased with larger PDFs.
+Solution: Optimized the pipeline by:
+Limiting the number of pages processed.
+Using batch embedding for efficiency.
+
+5.4 Generative Model Accuracy
+
+Issue: Responses lacked specificity or contained incorrect details.
+Solution: Enhanced retrieval quality by:
+Using top-k retrieval, Providing more context to the generative model.
+
+6. Key Features
+-Real-time PDF parsing and data extraction.
+-Embedding-based similarity search for relevant financial data.
+-Generative response 
+-Interactive web interface (using Streamlit).
