@@ -1,4 +1,4 @@
-Documentation for the Financial QA Bot
+# Documentation for the Financial QA Bot
 
 -----------------   1. Introduction
 Objective: Develop a Retrieval-Augmented Generation (RAG) model for a QA bot to answer queries related to financial data, specifically P&L tables extracted from PDFs.
@@ -38,7 +38,7 @@ The bot displays the answer and retrieved context.
 
 Library Used: tabula
 
-Challenges:
+## Challenges:
 Extracting tables from PDFs with mixed formatting.
 Identifying the correct P&L table among multiple extracted tables.
 Solution:
